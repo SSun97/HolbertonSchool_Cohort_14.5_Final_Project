@@ -1,0 +1,36 @@
+{
+  "name": "NFTXRVR",
+  "version": "1.0.0",
+  "description": "Node, express and mongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.14",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.7.3",
+    "slugify": "^1.6.5",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "ndb": "^1.1.5",
+    "prettier": "^2.6.2"
+  }
+}
