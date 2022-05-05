@@ -50,7 +50,7 @@ module.exports = class Email {
     await this.newTransport().sendMail(mailOptions);
   }
   async sendWelcome() {
-    await this.send('welcome', 'Welcome to the Natours Family!');
+    await this.send('welcome', 'Welcome to the xrvrnft Family!');
   }
   async sendPasswordReset() {
     await this.send(
@@ -59,4 +59,3 @@ module.exports = class Email {
     );
   }
 };
-

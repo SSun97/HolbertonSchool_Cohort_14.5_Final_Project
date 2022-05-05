@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 
 dotenv.config({ path: `${__dirname}/../../config.env` }); // need to do this before requiring other modules
-const Tour = require('../../models/tourModel');
+const Prod = require('../../models/prodModel');
 const Review = require('../../models/reviewModel');
 const User = require('../../models/userModel');
 
@@ -23,16 +23,16 @@ mongoose
     console.log('DB connection successful: ', con.connection.host);
   });
 
-const tours = fs.readFileSync(`${__dirname}/tours.json`, 'utf-8');
+const prods = fs.readFileSync(`${__dirname}/prods.json`, 'utf-8');
 const users = fs.readFileSync(`${__dirname}/users.json`, 'utf-8');
 const reviews = fs.readFileSync(`${__dirname}/reviews.json`, 'utf-8');
-const toursParsed = JSON.parse(tours);
+const prodsParsed = JSON.parse(prods);
 const usersParsed = JSON.parse(users);
 const reviewsParsed = JSON.parse(reviews);
 
 const importData = async () => {
   try {
-    await Tour.create(toursParsed);
+    await Prod.create(prodsParsed);
     await User.create(usersParsed, { validateBeforeSave: false });
     await Review.create(reviewsParsed);
     console.log('Data successfully loaded!');
@@ -44,7 +44,7 @@ const importData = async () => {
 // Delete all data from collection
 const deleteData = async () => {
   try {
-    await Tour.deleteMany();
+    await Prod.deleteMany();
     await Review.deleteMany();
     await User.deleteMany();
     console.log('Data successfully deleted!');

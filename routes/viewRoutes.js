@@ -1,21 +1,21 @@
 const express = require('express');
 const {
   getOverview,
-  getTour,
+  getProd,
   getLoginForm,
   getAccount,
-  getMyTours,
+  getMyProds,
   updateUserData,
 } = require('../controllers/viewsController');
 const { isLoggedIn, protect } = require('../controllers/authController');
-const { createBookingCheckout } = require('../controllers/bookingController');
+const { createOrderCheckout } = require('../controllers/orderController');
 
 const router = express.Router();
 router.use(isLoggedIn);
-router.get('/', createBookingCheckout, isLoggedIn, getOverview);
-router.get('/tour/:slug', isLoggedIn, getTour);
+router.get('/', createOrderCheckout, isLoggedIn, getOverview);
+router.get('/prod/:slug', isLoggedIn, getProd);
 router.get('/login', isLoggedIn, getLoginForm);
 router.get('/me', protect, getAccount);
-router.get('/my-tours', protect, getMyTours);
+router.get('/my-prods', protect, getMyProds);
 router.post('/submit-user-data', protect, updateUserData);
 module.exports = router;

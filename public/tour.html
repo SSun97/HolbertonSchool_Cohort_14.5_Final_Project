@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 
-    <title>Natours | The Park Camper Tour</title>
+    <title>xrvrnft | The Park Camper Prod</title>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js"></script>
     <link
@@ -22,8 +22,8 @@
   </head>
   <body>
     <header class="header">
-      <nav class="nav nav--tours">
-        <a href="/overview.html" class="nav__el">All tours</a>
+      <nav class="nav nav--prods">
+        <a href="/overview.html" class="nav__el">All prods</a>
         <form class="nav__search">
           <button class="nav__search-btn">
             <svg>
@@ -32,16 +32,16 @@
           </button>
           <input
             type="text"
-            placeholder="Search tours"
+            placeholder="Search prods"
             class="nav__search-input"
           />
         </form>
       </nav>
       <div class="header__logo">
-        <img src="img/logo-white.png" alt="Natours logo" />
+        <img src="img/logo-white.png" alt="xrvrnft logo" />
       </div>
       <nav class="nav nav--user">
-        <a href="#" class="nav__el">My bookings</a>
+        <a href="#" class="nav__el">My orders</a>
         <button class="nav__el">Log out</button>
         <a href="#" class="nav__el">
           <img src="img/user.jpg" alt="User photo" class="nav__user-img" />
@@ -60,7 +60,7 @@
         <h1 class="heading-primary">
           <span
             >The Park <br />
-            Camper Tour</span
+            Camper Prod</span
           >
         </h1>
         <div class="heading-box__group">
@@ -116,7 +116,7 @@
           </div>
 
           <div class="overview-box__group">
-            <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2>
+            <h2 class="heading-secondary ma-bt-lg">Your prod guides</h2>
 
             <div class="overview-box__detail">
               <img
@@ -130,10 +130,10 @@
             <div class="overview-box__detail">
               <img
                 src="img/users/user-18.jpg"
-                alt="Tour guide"
+                alt="Prod guide"
                 class="overview-box__img"
               />
-              <span class="overview-box__label">Tour guide</span>
+              <span class="overview-box__label">Prod guide</span>
               <span class="overview-box__text">Lisa Brown</span>
             </div>
             <div class="overview-box__detail">
@@ -150,7 +150,7 @@
       </div>
 
       <div class="description-box">
-        <h2 class="heading-secondary ma-bt-lg">About the park camper tour</h2>
+        <h2 class="heading-secondary ma-bt-lg">About the park camper prod</h2>
         <p class="description__text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -172,22 +172,22 @@
       <div class="picture-box">
         <img
           class="picture-box__img picture-box__img--1"
-          src="img/tour-5-1.jpg"
-          alt="The Park Camper Tour 1"
+          src="img/prod-5-1.jpg"
+          alt="The Park Camper Prod 1"
         />
       </div>
       <div class="picture-box">
         <img
           class="picture-box__img picture-box__img--2"
-          src="img/tour-5-2.jpg"
-          alt="The Park Camper Tour 1"
+          src="img/prod-5-2.jpg"
+          alt="The Park Camper Prod 1"
         />
       </div>
       <div class="picture-box">
         <img
           class="picture-box__img picture-box__img--3"
-          src="img/tour-5-3.jpg"
-          alt="The Park Camper Tour 1"
+          src="img/prod-5-3.jpg"
+          alt="The Park Camper Prod 1"
         />
       </div>
     </section>
@@ -205,67 +205,67 @@
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [-112.987418, 37.198125]
+                coordinates: [-112.987418, 37.198125],
               },
               properties: {
-                description: 'Zion Canyon National Park'
-              }
+                description: 'Zion Canyon National Park',
+              },
             },
             {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [-111.376161, 36.86438]
+                coordinates: [-111.376161, 36.86438],
               },
               properties: {
-                description: 'Antelope Canyon'
-              }
+                description: 'Antelope Canyon',
+              },
             },
             {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [-112.115763, 36.058973]
+                coordinates: [-112.115763, 36.058973],
               },
               properties: {
-                description: 'Grand Canyon National Park'
-              }
+                description: 'Grand Canyon National Park',
+              },
             },
             {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [-116.107963, 34.011646]
+                coordinates: [-116.107963, 34.011646],
               },
               properties: {
-                description: 'Joshua Tree National Park'
-              }
-            }
-          ]
+                description: 'Joshua Tree National Park',
+              },
+            },
+          ],
         };
 
         const map = new mapboxgl.Map({
           container: 'map',
           style: 'mapbox://styles/jonasschmedtmann/cjnxfn3zk7bj52rpegdltx58h',
-          scrollZoom: false
+          scrollZoom: false,
         });
 
         const bounds = new mapboxgl.LngLatBounds();
 
-        geojson.features.forEach(function(marker) {
+        geojson.features.forEach(function (marker) {
           var el = document.createElement('div');
           el.className = 'marker';
 
           new mapboxgl.Marker({
             element: el,
-            anchor: 'bottom'
+            anchor: 'bottom',
           })
             .setLngLat(marker.geometry.coordinates)
             .addTo(map);
 
           new mapboxgl.Popup({
             offset: 30,
-            closeOnClick: false
+            closeOnClick: false,
           })
             .setLngLat(marker.geometry.coordinates)
             .setHTML('<p>' + marker.properties.description + '</p>')
@@ -279,11 +279,11 @@
             top: 200,
             bottom: 150,
             left: 50,
-            right: 50
-          }
+            right: 50,
+          },
         });
 
-        map.on('load', function() {
+        map.on('load', function () {
           map.addLayer({
             id: 'route',
             type: 'line',
@@ -298,20 +298,20 @@
                     [-112.987418, 37.198125],
                     [-111.376161, 36.86438],
                     [-112.115763, 36.058973],
-                    [-116.107963, 34.011646]
-                  ]
-                }
-              }
+                    [-116.107963, 34.011646],
+                  ],
+                },
+              },
             },
             layout: {
               'line-join': 'round',
-              'line-cap': 'round'
+              'line-cap': 'round',
             },
             paint: {
               'line-color': '#55c57a',
               'line-opacity': 0.6,
-              'line-width': 3
-            }
+              'line-width': 3,
+            },
           });
         });
       </script>
@@ -488,24 +488,24 @@
     <section class="section-cta">
       <div class="cta">
         <div class="cta__img cta__img--logo">
-          <img src="img/logo-white.png" alt="Natours logo" class="" />
+          <img src="img/logo-white.png" alt="xrvrnft logo" class="" />
         </div>
-        <img src="img/tour-5-2.jpg" alt="" class="cta__img cta__img--1" />
-        <img src="img/tour-5-1.jpg" alt="" class="cta__img cta__img--2" />
+        <img src="img/prod-5-2.jpg" alt="" class="cta__img cta__img--1" />
+        <img src="img/prod-5-1.jpg" alt="" class="cta__img cta__img--2" />
 
         <div class="cta__content">
           <h2 class="heading-secondary">What are you waiting for?</h2>
           <p class="cta__text">
             10 days. 1 adventure. Infinite memories. Make it yours today!
           </p>
-          <button class="btn btn--green span-all-rows">Book tour now!</button>
+          <button class="btn btn--green span-all-rows">Book prod now!</button>
         </div>
       </div>
     </section>
 
     <div class="footer">
       <div class="footer__logo">
-        <img src="img/logo-green.png" alt="Natours logo" />
+        <img src="img/logo-green.png" alt="xrvrnft logo" />
       </div>
       <ul class="footer__nav">
         <li><a href="#">About us</a></li>

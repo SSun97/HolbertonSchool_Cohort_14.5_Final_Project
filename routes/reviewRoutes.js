@@ -3,7 +3,7 @@ const {
   getAllReviews,
   createReview,
   updateReview,
-  setTourUserIds,
+  setProdUserIds,
   getReview,
 } = require('../controllers/reviewController');
 const { protect, restrictTo } = require('../controllers/authController');
@@ -15,7 +15,7 @@ router.use(protect);
 router
   .route('/')
   .get(getAllReviews)
-  .post(protect, restrictTo('user'), setTourUserIds, createReview);
+  .post(protect, restrictTo('user'), setProdUserIds, createReview);
 router
   .route('/:id')
   .get(getReview)

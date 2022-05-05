@@ -870,18 +870,18 @@ body {
     flex-direction: column;
   }
 }
-.nav--tours {
+.nav--prods {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 40%;
   flex: 0 1 40%;
 }
 @media only screen and (max-width: 62.5em) {
-  .nav--tours {
+  .nav--prods {
     margin-bottom: 1.5rem;
   }
 }
 @media only screen and (max-width: 37.5em) {
-  .nav--tours {
+  .nav--prods {
     margin-bottom: 0;
   }
 }

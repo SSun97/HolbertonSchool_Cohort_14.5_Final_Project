@@ -1,6 +1,6 @@
-// review/ rating/ created At/ ref to tour , ref to user
+// review/ rating/ created At/ ref to prod , ref to user
 const mongoose = require('mongoose');
-const Tour = require('./tourModel');
+const Prod = require('./prodModel');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -22,11 +22,11 @@ const reviewSchema = new mongoose.Schema(
       default: Date.now(),
       select: false,
     },
-    // ref to tour, ref to user
-    tour: {
+    // ref to prod, ref to user
+    prod: {
       type: mongoose.Schema.ObjectId,
-      ref: 'Tour',
-      required: [true, 'Review must belong to a tour'],
+      ref: 'Prod',
+      required: [true, 'Review must belong to a prod'],
     },
     user: {
       type: mongoose.Schema.ObjectId,
@@ -39,7 +39,7 @@ const reviewSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
+reviewSchema.index({ prod: 1, user: 1 }, { unique: true });
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'user',
@@ -47,28 +47,28 @@ reviewSchema.pre(/^find/, function (next) {
   });
   next();
 });
-reviewSchema.statics.calcAvgRatings = async function (tourId) {
+reviewSchema.statics.calcAvgRatings = async function (prodId) {
   const stats = await this.aggregate([
     {
-      $match: { tour: tourId },
+      $match: { prod: prodId },
     },
     {
       $group: {
-        _id: '$tour',
+        _id: '$prod',
         nRating: { $sum: 1 },
         avgRating: { $avg: '$rating' },
       },
     },
   ]);
   // console.log(stats);
-  await Tour.findByIdAndUpdate(tourId, {
+  await Prod.findByIdAndUpdate(prodId, {
     ratingsQuantity: stats.length > 0 ? stats[0].nRating : 0,
     ratingsAverage: stats.length > 0 ? stats[0].avgRating : 4.5,
   });
 };
 reviewSchema.post('save', function () {
   // console.log(this.constructor.model.calcAvgRating);
-  this.constructor.calcAvgRatings(this.tour);
+  this.constructor.calcAvgRatings(this.prod);
 });
 reviewSchema.pre(/^findOneAnd/, async function (next) {
   this.r = await this.findOne();
@@ -77,7 +77,7 @@ reviewSchema.pre(/^findOneAnd/, async function (next) {
 });
 reviewSchema.post(/^findOneAnd/, async function () {
   // does not work here because query is not available
-  await this.r.constructor.calcAvgRatings(this.r.tour);
+  await this.r.constructor.calcAvgRatings(this.r.prod);
   // console.log(this.r);
 });
 
